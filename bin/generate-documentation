@@ -1,0 +1,68 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const { CLIEngine } = require('eslint');
+const getRuleURI = require('eslint-rule-documentation');
+const fetch = require('node-fetch');
+const cheerio = require('cheerio');
+
+const { error, log } = console;
+
+const cli = new CLIEngine();
+const config = cli.getConfigForFile();
+
+async function getDescription ({ rule, url }) {
+  try {
+    const ruleName = rule.replace(/^.+\//, '');
+    const source = (url.match(/plugin-(.+?)[/#]/) || [])[1] || 'eslint';
+
+    const res = await fetch(url);
+    const body = await res.text();
+    const $ = cheerio.load(body);
+
+    const description = {
+      eslint: () => $('#rule-details')
+        .next()
+        .html(),
+      import: () => $(`#user-content-${ruleName}`)
+        .parent()
+        .next()
+        .html(),
+      node: () => $('#readme h1')
+        .text()
+        .replace(` (${ruleName})`, ''),
+      promise: () => $(`#user-content-${ruleName}, #user-content-rule-${ruleName}`)
+        .parent()
+        .next()
+        .html(),
+      standard: () => $('#readme li')
+        .filter((index, item) => new RegExp(`^${ruleName}`).test($(item).text()))
+        .html()
+        .replace(`<code>${ruleName}</code> - `, '')
+    };
+
+    return description[source]();
+  } catch (err) {
+    error(err);
+    return '';
+  }
+}
+
+log('# Rules\n');
+log('Listed below are the rules and configuration for `eslint-config-wondermonger/lib/script`.\n');
+log('Global strict-mode is disallowed when using `eslint-config-wondermonger` and ES modules.\n');
+
+Promise
+  .all(Object.entries(config.rules).map(async ([rule, value]) => {
+    const { found, url } = getRuleURI(rule);
+    const description = await getDescription({ found, rule, url });
+
+    const descriptionMd = description.replace(/<[/]*code.*?>/g, '`');
+    const ruleMd = `## [${rule}](${url})`;
+    const valueMd = `\`\`\`javascript\n${JSON.stringify(value, null, 2)}\n\`\`\``;
+
+    return `${ruleMd}\n\n${descriptionMd}\n\n${valueMd}`;
+  }))
+  .then(rules => log(rules.join('\n\n')))
+  .catch(err => error(err));

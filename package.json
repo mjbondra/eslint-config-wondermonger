@@ -1,0 +1,53 @@
+{
+  "name": "eslint-config-wondermonger",
+  "version": "1.0.0-0",
+  "description": "Opinionated ESLint configuration for Wondermonger projects.",
+  "main": "lib/index.js",
+  "author": {
+    "name": "Michael J. Bondra",
+    "email": "mjbondra@gmail.com",
+    "url": "https://mjbondra.com/"
+  },
+  "license": "MIT",
+  "keywords": [
+    "eslint",
+    "eslintconfig",
+    "wondermonger"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/wondermonger/eslint-config-wondermonger.git"
+  },
+  "scripts": {
+    "build": "yarn run build:docs",
+    "build:docs": "./bin/generate-documentation > ./docs/rules/README.md",
+    "lint": "eslint \"**/*.js\"",
+    "test": "yarn test:unit && yarn test:integration",
+    "test:integration": "mocha \"test/integration/**/*.js\"",
+    "test:unit": "mocha \"test/unit/**/*.js\""
+  },
+  "dependencies": {
+    "eslint-config-standard": "^10.2.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.0",
+    "cheerio": "^1.0.0-rc.2",
+    "dirty-chai": "^2.0.0",
+    "eslint": "^4.11.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "eslint-rule-documentation": "^1.0.18",
+    "mocha": "^4.0.0",
+    "node-fetch": "^1.7.3",
+    "require-dir": "^0.3.0"
+  },
+  "peerDependencies": {
+    "eslint": "^4.11.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.0",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.0"
+  }
+}
