@@ -6,10 +6,22 @@ const { CLIEngine } = require('eslint');
 const getRuleURI = require('eslint-rule-documentation');
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
+const yargs = require('yargs');
 
 const { error, log } = console;
 
-const cli = new CLIEngine();
+const { argv } = yargs.option('config', {
+  alias: 'c',
+  default: '.eslintrc',
+  describe: 'ESLint configuration file',
+  type: 'string'
+});
+
+const cli = new CLIEngine({
+  configFile: argv.config,
+  useEslintrc: false
+});
+
 const config = cli.getConfigForFile();
 
 async function getDescription ({ rule, url }) {
@@ -50,8 +62,8 @@ async function getDescription ({ rule, url }) {
 }
 
 log('# Rules\n');
-log('Listed below are the rules and configuration for `eslint-config-wondermonger/lib/script`.\n');
-log('Global strict-mode is disallowed when using `eslint-config-wondermonger` and ES modules.\n');
+log('Listed below are the rules and configuration for `eslint-config-wondermonger`.\n');
+log('Global `\'use strict\';` is required when using `eslint-config-wondermonger/lib/script`.\n');
 
 Promise
   .all(Object.entries(config.rules).map(async ([rule, value]) => {
