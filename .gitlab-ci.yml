@@ -1,7 +1,8 @@
-image: wondermonger/ci-tools:latest
+image: wondermonger/ci-tools:v2
 
 stages:
   - install
+  - lint
   - build
   - test
   - deploy
@@ -13,23 +14,23 @@ install:
   script: ci-node-install
   stage: install
 
-build:
-  artifacts:
-    paths:
-      - docs/rules/
-  script: ci-node-build
-  stage: build
-
 lint:
   script: ci-node-lint
-  stage: test
+  stage: lint
+
+documentation:
+  artifacts:
+    paths:
+      - docs/
+  script: ci-node-build docs
+  stage: build
 
 unit:
-  script: ci-node-unit-tests
+  script: ci-node-test unit
   stage: test
 
 integration:
-  script: ci-node-integration-tests
+  script: ci-node-test integration
   stage: test
 
 release:
@@ -37,11 +38,13 @@ release:
     - master
   script:
     - ci-git-config
-    - ci-git-node-release
+    - ci-git-release -a docs
   stage: deploy
 
 publish:
   only:
     - tags
-  script: ci-node-publish
+  script:
+    - ci-node-config
+    - ci-node-release
   stage: deploy
