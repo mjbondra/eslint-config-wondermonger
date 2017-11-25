@@ -26,31 +26,25 @@ Create a file named `.eslintrc` in your project's root directory that contains t
 
 ```json
 {
-  "extends": "wondermonger/lib/script"
+  "extends": "wondermonger"
 }
 ```
-
-`wondermonger/lib/script` in the above example could instead be `wondermonger` if your project uses ES modules -- files that use the `import`/`export` module syntax.
 
 ## Available Configurations
 
 ### `wondermonger`
 
-* Base configuration for linting ES modules.
-
-* Extends [StandardJS](http://standardjs.com/rules.html) -- with semicolons -- and borrows additional rules from the [Airbnb JavaScript Styleguide](https://github.com/airbnb/javascript).
-
-* You should use `wondermonger/lib/script` with your project unless it contains ES modules -- files that use the `import`/`export` module syntax.
+- Extends and (heavily) modifies [StandardJS](http://standardjs.com/rules.html).
+- Built for linting ES modules.
 
 ### `wondermonger/lib/script`
 
-* Extends base configuration for scripts that are **NOT** ES modules.
-
-* Regular scripts and CommonJS/Node.js modules **DO NOT** execute in `strict` mode by default -- unlike ES modules. The `wondermonger/lib/script` configuration enforces that these files **ALWAYS** include a global `'use strict';` declaration.
+- Extends and (barely) modifies the base `wondermonger` configuration.
+- Built for linting CommonJS modules.
 
 ## Rules
 
-- [Documentation for Rules and Configuration](docs/rules)
+- [Documentation for Rules and Configuration](https://gitlab.com/wondermonger/eslint-config-wondermonger/tree/master/docs/rules)
 
 ## License
 
