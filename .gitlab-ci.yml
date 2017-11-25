@@ -19,6 +19,8 @@ lint:
   stage: lint
 
 documentation:
+  only:
+    - master
   artifacts:
     paths:
       - docs/
