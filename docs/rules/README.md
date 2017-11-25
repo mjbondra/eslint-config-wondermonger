@@ -1,8 +1,8 @@
 # Rules
 
-Listed below are the rules and configuration for `eslint-config-wondermonger/lib/script`.
+Listed below are the rules and configuration for `eslint-config-wondermonger`.
 
-Global strict-mode is disallowed when using `eslint-config-wondermonger` and ES modules.
+Global `'use strict';` is required when using `eslint-config-wondermonger/lib/script`.
 
 ## [accessor-pairs](https://eslint.org/docs/rules/accessor-pairs)
 
@@ -1762,7 +1762,7 @@ This rule requires or disallows strict mode directives.
 ```javascript
 [
   "error",
-  "global"
+  "never"
 ]
 ```
 
