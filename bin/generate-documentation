@@ -8,7 +8,7 @@ const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 const yargs = require('yargs');
 
-const { error, log } = console;
+const { stderr, stdout } = process;
 
 const { argv } = yargs.option('config', {
   alias: 'c',
@@ -24,6 +24,23 @@ const cli = new CLIEngine({
 
 const config = cli.getConfigForFile();
 
+// header
+stdout.write('# Rules\n\n');
+stdout.write('Listed below are the rules and configuration for `eslint-config-wondermonger`.\n\n');
+stdout.write('Global `\'use strict\';` is required when using `eslint-config-wondermonger/lib/script`.\n\n');
+
+const sortedRuleValuePairs = Object.entries(config.rules).sort(([a], [b]) => {
+  if (a > b) return 1;
+  if (b > a) return -1;
+  return 0;
+});
+
+// table of contents
+stdout.write('## Table of Contents\n\n');
+sortedRuleValuePairs.forEach(([rule]) => stdout.write(`1. [${rule}](#${rule.replace('/', '')})\n`));
+stdout.write('\n');
+
+// rules, descriptions, and values
 async function getDescription ({ rule, url }) {
   try {
     const ruleName = rule.replace(/^.+\//, '');
@@ -56,25 +73,22 @@ async function getDescription ({ rule, url }) {
 
     return description[source]();
   } catch (err) {
-    error(err);
+    stderr.write(`${err.stack}\n`);
     return '';
   }
 }
 
-log('# Rules\n');
-log('Listed below are the rules and configuration for `eslint-config-wondermonger`.\n');
-log('Global `\'use strict\';` is required when using `eslint-config-wondermonger/lib/script`.\n');
+const rulesMdPromises = sortedRuleValuePairs.map(async ([rule, value]) => {
+  const { found, url } = getRuleURI(rule);
+  const description = await getDescription({ found, rule, url });
 
-Promise
-  .all(Object.entries(config.rules).map(async ([rule, value]) => {
-    const { found, url } = getRuleURI(rule);
-    const description = await getDescription({ found, rule, url });
+  const descriptionMd = description.replace(/<[/]*code.*?>/g, '`');
+  const ruleMd = `## [${rule}](${url})`;
+  const valueMd = `\`\`\`javascript\n${JSON.stringify(value, null, 2)}\n\`\`\``;
 
-    const descriptionMd = description.replace(/<[/]*code.*?>/g, '`');
-    const ruleMd = `## [${rule}](${url})`;
-    const valueMd = `\`\`\`javascript\n${JSON.stringify(value, null, 2)}\n\`\`\``;
+  return `${ruleMd}\n\n${descriptionMd}\n\n${valueMd}`;
+});
 
-    return `${ruleMd}\n\n${descriptionMd}\n\n${valueMd}`;
-  }))
-  .then(rules => log(rules.join('\n\n')))
-  .catch(err => error(err));
+Promise.all(rulesMdPromises)
+  .then(rulesMdArray => stdout.write(`${rulesMdArray.join('\n\n')}\n`))
+  .catch(err => stderr.write(`${err.stack}\n`));
