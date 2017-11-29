@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-wondermonger",
-  "version": "1.0.6-0",
+  "version": "2.0.0-0",
   "description": "Opinionated ESLint configuration for Wondermonger projects.",
   "main": "lib/index.js",
   "author": {
