@@ -4,9 +4,217 @@ Listed below are the rules and configuration for `eslint-config-wondermonger`.
 
 Global `'use strict';` is required when using `eslint-config-wondermonger/lib/script`.
 
+## Table of Contents
+
+1. [accessor-pairs](#accessor-pairs)
+1. [array-callback-return](#array-callback-return)
+1. [arrow-body-style](#arrow-body-style)
+1. [arrow-spacing](#arrow-spacing)
+1. [block-spacing](#block-spacing)
+1. [brace-style](#brace-style)
+1. [camelcase](#camelcase)
+1. [class-methods-use-this](#class-methods-use-this)
+1. [comma-dangle](#comma-dangle)
+1. [comma-spacing](#comma-spacing)
+1. [comma-style](#comma-style)
+1. [consistent-return](#consistent-return)
+1. [constructor-super](#constructor-super)
+1. [curly](#curly)
+1. [default-case](#default-case)
+1. [dot-location](#dot-location)
+1. [dot-notation](#dot-notation)
+1. [eol-last](#eol-last)
+1. [eqeqeq](#eqeqeq)
+1. [func-call-spacing](#func-call-spacing)
+1. [func-style](#func-style)
+1. [generator-star-spacing](#generator-star-spacing)
+1. [global-require](#global-require)
+1. [guard-for-in](#guard-for-in)
+1. [handle-callback-err](#handle-callback-err)
+1. [import/export](#importexport)
+1. [import/first](#importfirst)
+1. [import/newline-after-import](#importnewline-after-import)
+1. [import/no-amd](#importno-amd)
+1. [import/no-duplicates](#importno-duplicates)
+1. [import/no-mutable-exports](#importno-mutable-exports)
+1. [import/no-named-as-default](#importno-named-as-default)
+1. [import/no-named-as-default-member](#importno-named-as-default-member)
+1. [import/no-unresolved](#importno-unresolved)
+1. [import/no-webpack-loader-syntax](#importno-webpack-loader-syntax)
+1. [import/prefer-default-export](#importprefer-default-export)
+1. [indent](#indent)
+1. [key-spacing](#key-spacing)
+1. [keyword-spacing](#keyword-spacing)
+1. [linebreak-style](#linebreak-style)
+1. [max-len](#max-len)
+1. [new-cap](#new-cap)
+1. [new-parens](#new-parens)
+1. [newline-per-chained-call](#newline-per-chained-call)
+1. [no-alert](#no-alert)
+1. [no-array-constructor](#no-array-constructor)
+1. [no-caller](#no-caller)
+1. [no-case-declarations](#no-case-declarations)
+1. [no-class-assign](#no-class-assign)
+1. [no-compare-neg-zero](#no-compare-neg-zero)
+1. [no-cond-assign](#no-cond-assign)
+1. [no-console](#no-console)
+1. [no-const-assign](#no-const-assign)
+1. [no-constant-condition](#no-constant-condition)
+1. [no-continue](#no-continue)
+1. [no-control-regex](#no-control-regex)
+1. [no-debugger](#no-debugger)
+1. [no-delete-var](#no-delete-var)
+1. [no-dupe-args](#no-dupe-args)
+1. [no-dupe-class-members](#no-dupe-class-members)
+1. [no-dupe-keys](#no-dupe-keys)
+1. [no-duplicate-case](#no-duplicate-case)
+1. [no-else-return](#no-else-return)
+1. [no-empty](#no-empty)
+1. [no-empty-character-class](#no-empty-character-class)
+1. [no-empty-function](#no-empty-function)
+1. [no-empty-pattern](#no-empty-pattern)
+1. [no-eval](#no-eval)
+1. [no-ex-assign](#no-ex-assign)
+1. [no-extend-native](#no-extend-native)
+1. [no-extra-bind](#no-extra-bind)
+1. [no-extra-boolean-cast](#no-extra-boolean-cast)
+1. [no-extra-parens](#no-extra-parens)
+1. [no-extra-semi](#no-extra-semi)
+1. [no-fallthrough](#no-fallthrough)
+1. [no-floating-decimal](#no-floating-decimal)
+1. [no-func-assign](#no-func-assign)
+1. [no-global-assign](#no-global-assign)
+1. [no-implied-eval](#no-implied-eval)
+1. [no-inner-declarations](#no-inner-declarations)
+1. [no-invalid-regexp](#no-invalid-regexp)
+1. [no-irregular-whitespace](#no-irregular-whitespace)
+1. [no-iterator](#no-iterator)
+1. [no-label-var](#no-label-var)
+1. [no-labels](#no-labels)
+1. [no-lone-blocks](#no-lone-blocks)
+1. [no-lonely-if](#no-lonely-if)
+1. [no-loop-func](#no-loop-func)
+1. [no-mixed-operators](#no-mixed-operators)
+1. [no-mixed-spaces-and-tabs](#no-mixed-spaces-and-tabs)
+1. [no-multi-spaces](#no-multi-spaces)
+1. [no-multi-str](#no-multi-str)
+1. [no-multiple-empty-lines](#no-multiple-empty-lines)
+1. [no-negated-in-lhs](#no-negated-in-lhs)
+1. [no-nested-ternary](#no-nested-ternary)
+1. [no-new](#no-new)
+1. [no-new-func](#no-new-func)
+1. [no-new-object](#no-new-object)
+1. [no-new-require](#no-new-require)
+1. [no-new-symbol](#no-new-symbol)
+1. [no-new-wrappers](#no-new-wrappers)
+1. [no-obj-calls](#no-obj-calls)
+1. [no-octal](#no-octal)
+1. [no-octal-escape](#no-octal-escape)
+1. [no-param-reassign](#no-param-reassign)
+1. [no-path-concat](#no-path-concat)
+1. [no-proto](#no-proto)
+1. [no-prototype-builtins](#no-prototype-builtins)
+1. [no-redeclare](#no-redeclare)
+1. [no-regex-spaces](#no-regex-spaces)
+1. [no-return-assign](#no-return-assign)
+1. [no-return-await](#no-return-await)
+1. [no-script-url](#no-script-url)
+1. [no-self-assign](#no-self-assign)
+1. [no-self-compare](#no-self-compare)
+1. [no-sequences](#no-sequences)
+1. [no-shadow](#no-shadow)
+1. [no-shadow-restricted-names](#no-shadow-restricted-names)
+1. [no-sparse-arrays](#no-sparse-arrays)
+1. [no-tabs](#no-tabs)
+1. [no-template-curly-in-string](#no-template-curly-in-string)
+1. [no-this-before-super](#no-this-before-super)
+1. [no-throw-literal](#no-throw-literal)
+1. [no-trailing-spaces](#no-trailing-spaces)
+1. [no-undef](#no-undef)
+1. [no-undef-init](#no-undef-init)
+1. [no-underscore-dangle](#no-underscore-dangle)
+1. [no-unexpected-multiline](#no-unexpected-multiline)
+1. [no-unmodified-loop-condition](#no-unmodified-loop-condition)
+1. [no-unneeded-ternary](#no-unneeded-ternary)
+1. [no-unreachable](#no-unreachable)
+1. [no-unsafe-finally](#no-unsafe-finally)
+1. [no-unsafe-negation](#no-unsafe-negation)
+1. [no-unused-expressions](#no-unused-expressions)
+1. [no-unused-vars](#no-unused-vars)
+1. [no-use-before-define](#no-use-before-define)
+1. [no-useless-call](#no-useless-call)
+1. [no-useless-computed-key](#no-useless-computed-key)
+1. [no-useless-concat](#no-useless-concat)
+1. [no-useless-constructor](#no-useless-constructor)
+1. [no-useless-escape](#no-useless-escape)
+1. [no-useless-rename](#no-useless-rename)
+1. [no-useless-return](#no-useless-return)
+1. [no-var](#no-var)
+1. [no-void](#no-void)
+1. [no-whitespace-before-property](#no-whitespace-before-property)
+1. [no-with](#no-with)
+1. [node/no-deprecated-api](#nodeno-deprecated-api)
+1. [node/process-exit-as-throw](#nodeprocess-exit-as-throw)
+1. [object-property-newline](#object-property-newline)
+1. [one-var](#one-var)
+1. [operator-assignment](#operator-assignment)
+1. [operator-linebreak](#operator-linebreak)
+1. [padded-blocks](#padded-blocks)
+1. [prefer-const](#prefer-const)
+1. [prefer-promise-reject-errors](#prefer-promise-reject-errors)
+1. [prefer-rest-params](#prefer-rest-params)
+1. [prefer-spread](#prefer-spread)
+1. [prefer-template](#prefer-template)
+1. [promise/always-return](#promisealways-return)
+1. [promise/catch-or-return](#promisecatch-or-return)
+1. [promise/param-names](#promiseparam-names)
+1. [quote-props](#quote-props)
+1. [quotes](#quotes)
+1. [radix](#radix)
+1. [require-yield](#require-yield)
+1. [rest-spread-spacing](#rest-spread-spacing)
+1. [semi](#semi)
+1. [semi-spacing](#semi-spacing)
+1. [space-before-blocks](#space-before-blocks)
+1. [space-before-function-paren](#space-before-function-paren)
+1. [space-in-parens](#space-in-parens)
+1. [space-infix-ops](#space-infix-ops)
+1. [space-unary-ops](#space-unary-ops)
+1. [spaced-comment](#spaced-comment)
+1. [standard/array-bracket-even-spacing](#standardarray-bracket-even-spacing)
+1. [standard/computed-property-even-spacing](#standardcomputed-property-even-spacing)
+1. [standard/no-callback-literal](#standardno-callback-literal)
+1. [standard/object-curly-even-spacing](#standardobject-curly-even-spacing)
+1. [strict](#strict)
+1. [symbol-description](#symbol-description)
+1. [template-curly-spacing](#template-curly-spacing)
+1. [template-tag-spacing](#template-tag-spacing)
+1. [unicode-bom](#unicode-bom)
+1. [use-isnan](#use-isnan)
+1. [valid-typeof](#valid-typeof)
+1. [wrap-iife](#wrap-iife)
+1. [yield-star-spacing](#yield-star-spacing)
+1. [yoda](#yoda)
+
 ## [accessor-pairs](https://eslint.org/docs/rules/accessor-pairs)
 
 This rule enforces a style where it requires to have a getter for every property which has a setter defined.
+
+```javascript
+"error"
+```
+
+## [array-callback-return](https://eslint.org/docs/rules/array-callback-return)
+
+This rule finds callback functions of the following methods, then checks usage of `return` statement.
+
+```javascript
+"error"
+```
+
+## [arrow-body-style](https://eslint.org/docs/rules/arrow-body-style)
+
+This rule can enforce or disallow the use of braces around arrow function body.
 
 ```javascript
 "error"
@@ -64,6 +272,14 @@ This rule looks for any underscores (`_`) located within the source code. It ign
 ]
 ```
 
+## [class-methods-use-this](https://eslint.org/docs/rules/class-methods-use-this)
+
+This rule is aimed to flag class methods that do not use `this`.
+
+```javascript
+"error"
+```
+
 ## [comma-dangle](https://eslint.org/docs/rules/comma-dangle)
 
 This rule enforces consistent use of trailing commas in object and array literals.
@@ -106,6 +322,14 @@ This rule enforce consistent comma style in array literals, object literals, and
 ]
 ```
 
+## [consistent-return](https://eslint.org/docs/rules/consistent-return)
+
+This rule requires `return` statements to either always or never specify values. This rule ignores function definitions where the name begins with an uppercase letter, because constructors (when invoked with the `new` operator) return the instantiated object implicitly if they do not return another object explicitly.
+
+```javascript
+"error"
+```
+
 ## [constructor-super](https://eslint.org/docs/rules/constructor-super)
 
 This rule is aimed to flag invalid/missing `super()` calls.
@@ -125,6 +349,19 @@ This rule is aimed at preventing bugs and increasing code clarity by ensuring th
 ]
 ```
 
+## [default-case](https://eslint.org/docs/rules/default-case)
+
+This rule aims to require `default` case in `switch` statements. You may optionally include a `// no default` after the last `case` if there is no `default` case. The comment may be in any desired case, such as `// No Default`.
+
+```javascript
+[
+  "error",
+  {
+    "commentPattern": "^no default$"
+  }
+]
+```
+
 ## [dot-location](https://eslint.org/docs/rules/dot-location)
 
 This rule aims to enforce newline consistency in member expressions. This rule prevents the use of mixed newlines around the dot in a member expression.
@@ -134,6 +371,14 @@ This rule aims to enforce newline consistency in member expressions. This rule p
   "error",
   "property"
 ]
+```
+
+## [dot-notation](https://eslint.org/docs/rules/dot-notation)
+
+This rule is aimed at maintaining code consistency and improving code readability by encouraging use of the dot notation style whenever possible. As such, it will warn when it encounters an unnecessary use of square-bracket notation.
+
+```javascript
+"error"
 ```
 
 ## [eol-last](https://eslint.org/docs/rules/eol-last)
@@ -170,6 +415,20 @@ This rule requires or disallows spaces between the function name and the opening
 ]
 ```
 
+## [func-style](https://eslint.org/docs/rules/func-style)
+
+This rule enforces a particular type of `function` style throughout a JavaScript file, either declarations or expressions. You can specify which you prefer in the configuration.
+
+```javascript
+[
+  "error",
+  "declaration",
+  {
+    "allowArrowFunctions": true
+  }
+]
+```
+
 ## [generator-star-spacing](https://eslint.org/docs/rules/generator-star-spacing)
 
 This rule aims to enforce spacing around the `*` of generator functions.
@@ -181,6 +440,22 @@ This rule aims to enforce spacing around the `*` of generator functions.
 ]
 ```
 
+## [global-require](https://eslint.org/docs/rules/global-require)
+
+This rule requires all calls to `require()` to be at the top level of the module, similar to ES6 `import` and `export` statements, which also can occur only at the top level.
+
+```javascript
+"error"
+```
+
+## [guard-for-in](https://eslint.org/docs/rules/guard-for-in)
+
+This rule is aimed at preventing unexpected behavior that could arise from using a `for in` loop without filtering the results in the loop. As such, it will warn when `for in` loops do not filter their results with an `if` statement.
+
+```javascript
+"error"
+```
+
 ## [handle-callback-err](https://eslint.org/docs/rules/handle-callback-err)
 
 This rule expects that when you&#x2019;re using the callback pattern in Node.js you&#x2019;ll handle the error.
@@ -190,6 +465,106 @@ This rule expects that when you&#x2019;re using the callback pattern in Node.js 
   "error",
   "^(err|error)$"
 ]
+```
+
+## [import/export](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/export.md)
+
+Reports funny business with exports, like repeated exports of names or defaults.
+
+```javascript
+"error"
+```
+
+## [import/first](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/first.md)
+
+This rule reports any imports that come after non-import
+statements.
+
+```javascript
+[
+  "error",
+  "absolute-first"
+]
+```
+
+## [import/newline-after-import](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/newline-after-import.md)
+
+Enforces having one or more empty lines after the last top-level import statement or require call.
++(fixable) The `--fix` option on the [command line] automatically fixes problems reported by this rule.
+
+```javascript
+"error"
+```
+
+## [import/no-amd](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-amd.md)
+
+Reports `require([array], ...)` and `define([array], ...)` function calls at the
+module scope. Will not report if !=2 arguments, or first argument is not a literal array.
+
+```javascript
+"error"
+```
+
+## [import/no-duplicates](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-duplicates.md)
+
+Reports if a resolved path is imported more than once.
+
+```javascript
+"error"
+```
+
+## [import/no-mutable-exports](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-mutable-exports.md)
+
+Forbids the use of mutable exports with `var` or `let`.
+
+```javascript
+"error"
+```
+
+## [import/no-named-as-default](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-named-as-default.md)
+
+Reports use of an exported name as the locally imported name of a default export.
+
+```javascript
+"error"
+```
+
+## [import/no-named-as-default-member](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-named-as-default-member.md)
+
+Reports use of an exported name as a property on the default export.
+
+```javascript
+"error"
+```
+
+## [import/no-unresolved](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-unresolved.md)
+
+Ensures an imported module can be resolved to a module on the local filesystem,
+as defined by standard Node `require.resolve` behavior.
+
+```javascript
+[
+  "error",
+  {
+    "commonjs": true
+  }
+]
+```
+
+## [import/no-webpack-loader-syntax](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-webpack-loader-syntax.md)
+
+Forbid Webpack loader syntax in imports.
+
+```javascript
+"error"
+```
+
+## [import/prefer-default-export](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/prefer-default-export.md)
+
+When there is only a single export from a module, prefer using default export over named export.
+
+```javascript
+"error"
 ```
 
 ## [indent](https://eslint.org/docs/rules/indent)
@@ -234,6 +609,36 @@ This rule enforces consistent spacing around keywords and keyword-like tokens: `
 ]
 ```
 
+## [linebreak-style](https://eslint.org/docs/rules/linebreak-style)
+
+This rule enforces consistent line endings independent of operating system, VCS, or editor used across your codebase.
+
+```javascript
+[
+  "error",
+  "unix"
+]
+```
+
+## [max-len](https://eslint.org/docs/rules/max-len)
+
+This rule enforces a maximum line length to increase code readability and maintainability. The length of a line is defined as the number of Unicode characters in the line.
+
+```javascript
+[
+  "error",
+  {
+    "code": 100,
+    "ignoreComments": true,
+    "ignoreRegExpLiterals": true,
+    "ignoreStrings": true,
+    "ignoreTemplateLiterals": true,
+    "ignoreUrls": true,
+    "tabWidth": 2
+  }
+]
+```
+
 ## [new-cap](https://eslint.org/docs/rules/new-cap)
 
 This rule requires constructor names to begin with a capital letter. Certain built-in identifiers are exempt from this rule. These identifiers are:
@@ -256,6 +661,22 @@ This rule requires parentheses when invoking a constructor with no arguments usi
 "error"
 ```
 
+## [newline-per-chained-call](https://eslint.org/docs/rules/newline-per-chained-call)
+
+This rule requires a newline after each call in a method chain or deep member access. Computed property accesses such as `instance[something]` are excluded.
+
+```javascript
+"error"
+```
+
+## [no-alert](https://eslint.org/docs/rules/no-alert)
+
+This rule is aimed at catching debugging code that should be removed and popup UI elements that should be replaced with less obtrusive, custom UIs. As such, it will warn when it encounters `alert`, `prompt`, and `confirm` function calls which are not shadowed.
+
+```javascript
+"error"
+```
+
 ## [no-array-constructor](https://eslint.org/docs/rules/no-array-constructor)
 
 This rule disallows `Array` constructors.
@@ -267,6 +688,14 @@ This rule disallows `Array` constructors.
 ## [no-caller](https://eslint.org/docs/rules/no-caller)
 
 This rule is aimed at discouraging the use of deprecated and sub-optimal code, but disallowing the use of `arguments.caller` and `arguments.callee`. As such, it will warn when `arguments.caller` and `arguments.callee` are used.
+
+```javascript
+"error"
+```
+
+## [no-case-declarations](https://eslint.org/docs/rules/no-case-declarations)
+
+This rule aims to prevent access to uninitialized lexical bindings as well as accessing hoisted functions across case clauses.
 
 ```javascript
 "error"
@@ -296,6 +725,14 @@ This rule disallows ambiguous assignment operators in test conditions of `if`, `
 "error"
 ```
 
+## [no-console](https://eslint.org/docs/rules/no-console)
+
+This rule disallows calls to methods of the `console` object.
+
+```javascript
+"error"
+```
+
 ## [no-const-assign](https://eslint.org/docs/rules/no-const-assign)
 
 This rule is aimed to flag modifying variables that are declared using `const` keyword.
@@ -315,6 +752,14 @@ This rule disallows constant expressions in the test condition of:
     "checkLoops": false
   }
 ]
+```
+
+## [no-continue](https://eslint.org/docs/rules/no-continue)
+
+This rule disallows `continue` statements.
+
+```javascript
+"error"
 ```
 
 ## [no-control-regex](https://eslint.org/docs/rules/no-control-regex)
@@ -373,9 +818,39 @@ This rule disallows duplicate test expressions in `case` clauses of `switch` sta
 "error"
 ```
 
+## [no-else-return](https://eslint.org/docs/rules/no-else-return)
+
+This rule is aimed at highlighting an unnecessary block of code following an `if` containing a return statement. As such, it will warn when it encounters an `else` following a chain of `if`s, all of them containing a `return` statement.
+
+```javascript
+"error"
+```
+
+## [no-empty](https://eslint.org/docs/rules/no-empty)
+
+This rule disallows empty block statements. This rule ignores block statements which contain a comment (for example, in an empty `catch` or `finally` block of a `try` statement to indicate that execution should continue regardless of errors).
+
+```javascript
+[
+  "error",
+  {
+    "allowEmptyCatch": true
+  }
+]
+```
+
 ## [no-empty-character-class](https://eslint.org/docs/rules/no-empty-character-class)
 
 This rule disallows empty character classes in regular expressions.
+
+```javascript
+"error"
+```
+
+## [no-empty-function](https://eslint.org/docs/rules/no-empty-function)
+
+This rule is aimed at eliminating empty functions.
+A function will not be considered a problem if it contains a comment.
 
 ```javascript
 "error"
@@ -443,6 +918,14 @@ This rule always ignores extra parentheses around the following:
     "nestedBinaryExpressions": false
   }
 ]
+```
+
+## [no-extra-semi](https://eslint.org/docs/rules/no-extra-semi)
+
+This rule disallows unnecessary semicolons.
+
+```javascript
+"error"
 ```
 
 ## [no-fallthrough](https://eslint.org/docs/rules/no-fallthrough)
@@ -525,7 +1008,7 @@ This rule is aimed at preventing errors that may arise from using the `__iterato
 This rule aims to create clearer code by disallowing the bad practice of creating a label that shares a name with a variable that is in scope.
 
 ```javascript
-"off"
+"error"
 ```
 
 ## [no-labels](https://eslint.org/docs/rules/no-labels)
@@ -545,6 +1028,22 @@ This rule aims to eliminate the use of labeled statements in JavaScript. It will
 ## [no-lone-blocks](https://eslint.org/docs/rules/no-lone-blocks)
 
 This rule aims to eliminate unnecessary and potentially confusing blocks at the top level of a script or within other blocks.
+
+```javascript
+"error"
+```
+
+## [no-lonely-if](https://eslint.org/docs/rules/no-lonely-if)
+
+This rule disallows `if` statements as the only statement in `else` blocks.
+
+```javascript
+"error"
+```
+
+## [no-loop-func](https://eslint.org/docs/rules/no-loop-func)
+
+This error is raised to highlight a piece of code that may not work as you expect it to and could also indicate a misunderstanding of how the language works. Your code may run without any problems if you do not fix this error, but in some situations it could behave unexpectedly.
 
 ```javascript
 "error"
@@ -646,6 +1145,14 @@ Just as developers might type `-a + b` when they mean `-(a + b)` for the negativ
 "error"
 ```
 
+## [no-nested-ternary](https://eslint.org/docs/rules/no-nested-ternary)
+
+The `no-nested-ternary` rule disallows nested ternary expressions.
+
+```javascript
+"error"
+```
+
 ## [no-new](https://eslint.org/docs/rules/no-new)
 
 This rule is aimed at maintaining consistency and convention by disallowing constructor calls using the `new` keyword that do not assign the resulting object to a variable.
@@ -718,6 +1225,14 @@ This rule disallows octal escape sequences in string literals.
 "error"
 ```
 
+## [no-param-reassign](https://eslint.org/docs/rules/no-param-reassign)
+
+This rule aims to prevent unintended behavior caused by modification or reassignment of function parameters.
+
+```javascript
+"error"
+```
+
 ## [no-path-concat](https://eslint.org/docs/rules/no-path-concat)
 
 This rule aims to prevent string concatenation of directory paths in Node.js
@@ -729,6 +1244,14 @@ This rule aims to prevent string concatenation of directory paths in Node.js
 ## [no-proto](https://eslint.org/docs/rules/no-proto)
 
 When an object is created `__proto__` is set to the original prototype property of the object&#x2019;s constructor function. `getPrototypeOf` is the preferred method of getting &#x201C;the prototype&#x201D;.
+
+```javascript
+"error"
+```
+
+## [no-prototype-builtins](https://eslint.org/docs/rules/no-prototype-builtins)
+
+This rule disallows calling some `Object.prototype` methods directly on object instances.
 
 ```javascript
 "error"
@@ -769,6 +1292,14 @@ This rule aims to prevent a likely common performance hazard due to a lack of un
 "error"
 ```
 
+## [no-script-url](https://eslint.org/docs/rules/no-script-url)
+
+Examples of <strong>incorrect</strong> code for this rule:
+
+```javascript
+"error"
+```
+
 ## [no-self-assign](https://eslint.org/docs/rules/no-self-assign)
 
 This rule is aimed at eliminating self assignments.
@@ -788,6 +1319,14 @@ This error is raised to highlight a potentially confusing and potentially pointl
 ## [no-sequences](https://eslint.org/docs/rules/no-sequences)
 
 This rule forbids the use of the comma operator, with the following exceptions:
+
+```javascript
+"error"
+```
+
+## [no-shadow](https://eslint.org/docs/rules/no-shadow)
+
+This rule aims to eliminate shadowed variable declarations.
 
 ```javascript
 "error"
@@ -860,6 +1399,14 @@ Any reference to an undeclared variable causes a warning, unless the variable is
 ## [no-undef-init](https://eslint.org/docs/rules/no-undef-init)
 
 This rule aims to eliminate variable declarations that initialize to `undefined`.
+
+```javascript
+"error"
+```
+
+## [no-underscore-dangle](https://eslint.org/docs/rules/no-underscore-dangle)
+
+This rule disallows dangling underscores in identifiers.
 
 ```javascript
 "error"
@@ -975,6 +1522,14 @@ This rule disallows unnecessary usage of computed property keys.
 "error"
 ```
 
+## [no-useless-concat](https://eslint.org/docs/rules/no-useless-concat)
+
+This rule aims to flag the concatenation of 2 literals when they could be combined into a single literal. Literals can be strings or template literals.
+
+```javascript
+"error"
+```
+
 ## [no-useless-constructor](https://eslint.org/docs/rules/no-useless-constructor)
 
 This rule flags class constructors that can be safely removed without changing how the class works.
@@ -1007,6 +1562,22 @@ This rule aims to report redundant `return` statements.
 "error"
 ```
 
+## [no-var](https://eslint.org/docs/rules/no-var)
+
+This rule is aimed at discouraging the use of `var` and encouraging the use of `const` or `let` instead.
+
+```javascript
+"error"
+```
+
+## [no-void](https://eslint.org/docs/rules/no-void)
+
+This rule aims to eliminate use of void operator.
+
+```javascript
+"error"
+```
+
 ## [no-whitespace-before-property](https://eslint.org/docs/rules/no-whitespace-before-property)
 
 This rule disallows whitespace around the dot or before the opening bracket before properties of objects if they are on the same line. This rule allows whitespace when the object and property are on separate lines, as it is common to add newlines to longer chains of properties:
@@ -1018,6 +1589,22 @@ This rule disallows whitespace around the dot or before the opening bracket befo
 ## [no-with](https://eslint.org/docs/rules/no-with)
 
 This rule disallows `with` statements.
+
+```javascript
+"error"
+```
+
+## [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md)
+
+Disallow deprecated API
+
+```javascript
+"error"
+```
+
+## [node/process-exit-as-throw](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/process-exit-as-throw.md)
+
+Make the same code path as throw at process.exit()
 
 ```javascript
 "error"
@@ -1046,6 +1633,17 @@ This rule enforces variables to be declared either together or separately per fu
   {
     "initialized": "never"
   }
+]
+```
+
+## [operator-assignment](https://eslint.org/docs/rules/operator-assignment)
+
+This rule requires or disallows assignment operator shorthand where possible.
+
+```javascript
+[
+  "error",
+  "always"
 ]
 ```
 
@@ -1081,12 +1679,88 @@ This rule enforces consistent empty line padding within blocks.
 ]
 ```
 
+## [prefer-const](https://eslint.org/docs/rules/prefer-const)
+
+This rule is aimed at flagging variables that are declared using `let` keyword, but never reassigned after the initial assignment.
+
+```javascript
+"error"
+```
+
 ## [prefer-promise-reject-errors](https://eslint.org/docs/rules/prefer-promise-reject-errors)
 
 This rule aims to ensure that Promises are only rejected with `Error` objects.
 
 ```javascript
 "error"
+```
+
+## [prefer-rest-params](https://eslint.org/docs/rules/prefer-rest-params)
+
+This rule is aimed to flag usage of `arguments` variables.
+
+```javascript
+"error"
+```
+
+## [prefer-spread](https://eslint.org/docs/rules/prefer-spread)
+
+This rule is aimed to flag usage of `Function.prototype.apply()` in situations where the spread operator could be used instead.
+
+```javascript
+"error"
+```
+
+## [prefer-template](https://eslint.org/docs/rules/prefer-template)
+
+This rule is aimed to flag usage of `+` operators with strings.
+
+```javascript
+"error"
+```
+
+## [promise/always-return](https://github.com/xjamundx/eslint-plugin-promise#always-return)
+
+Ensure that inside a `then()` you make sure to `return` a new promise or value.
+See <a href="http://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html">http://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html</a> (rule #5)
+for more info on why that&apos;s a good idea.
+
+```javascript
+"error"
+```
+
+## [promise/catch-or-return](https://github.com/xjamundx/eslint-plugin-promise#catch-or-return)
+
+Ensure that each time a `then()` is applied to a promise, a
+`catch()` is applied as well. Exceptions are made if you are
+returning that promise.
+
+```javascript
+"error"
+```
+
+## [promise/param-names](https://github.com/xjamundx/eslint-plugin-promise#param-names)
+
+Enforce standard parameter names for Promise constructors
+
+```javascript
+"error"
+```
+
+## [quote-props](https://eslint.org/docs/rules/quote-props)
+
+This rule requires quotes around object literal property names.
+
+```javascript
+[
+  "error",
+  "as-needed",
+  {
+    "keywords": false,
+    "unnecessary": true,
+    "numbers": false
+  }
+]
 ```
 
 ## [quotes](https://eslint.org/docs/rules/quotes)
@@ -1096,11 +1770,24 @@ This rule enforces the consistent use of either backticks, double, or single quo
 ```javascript
 [
   "error",
-  "single",
-  {
-    "avoidEscape": true
-  }
+  "single"
 ]
+```
+
+## [radix](https://eslint.org/docs/rules/radix)
+
+This rule is aimed at preventing the unintended conversion of a string to a number of a different base than intended or at preventing the redundant `10` radix if targeting modern environments only.
+
+```javascript
+"error"
+```
+
+## [require-yield](https://eslint.org/docs/rules/require-yield)
+
+This rule generates warnings for generator functions that do not have the `yield` keyword.
+
+```javascript
+"error"
 ```
 
 ## [rest-spread-spacing](https://eslint.org/docs/rules/rest-spread-spacing)
@@ -1230,6 +1917,58 @@ exceptions for various documentation styles.
 ]
 ```
 
+## [standard/array-bracket-even-spacing](https://github.com/xjamundx/eslint-plugin-standard#rules-explanations)
+
+Like `array-bracket-even-spacing` from ESLint except it has an `either` option which lets you have 1 or 0 spacing padding.
+
+```javascript
+[
+  "error",
+  "either"
+]
+```
+
+## [standard/computed-property-even-spacing](https://github.com/xjamundx/eslint-plugin-standard#rules-explanations)
+
+Like `computed-property-spacing` around ESLint except is has an `even` option which lets you have 1 or 0 spacing padding.
+
+```javascript
+[
+  "error",
+  "even"
+]
+```
+
+## [standard/no-callback-literal](https://github.com/xjamundx/eslint-plugin-standard#rules-explanations)
+
+Ensures that we strictly follow the callback pattern with `undefined`, `null` or an error object in the first position of a callback.
+
+```javascript
+"error"
+```
+
+## [standard/object-curly-even-spacing](https://github.com/xjamundx/eslint-plugin-standard#rules-explanations)
+
+Like `object-curly-spacing` from ESLint except it has an `either` option which lets you have 1 or 0 spaces padding.
+
+```javascript
+[
+  "error",
+  "either"
+]
+```
+
+## [strict](https://eslint.org/docs/rules/strict)
+
+This rule requires or disallows strict mode directives.
+
+```javascript
+[
+  "error",
+  "never"
+]
+```
+
 ## [symbol-description](https://eslint.org/docs/rules/symbol-description)
 
 This rules requires a description when creating symbols.
@@ -1328,556 +2067,4 @@ This rule aims to enforce consistent style of conditions which compare a variabl
   "error",
   "never"
 ]
-```
-
-## [import/export](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/export.md)
-
-Reports funny business with exports, like repeated exports of names or defaults.
-
-```javascript
-"error"
-```
-
-## [import/first](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/first.md)
-
-This rule reports any imports that come after non-import
-statements.
-
-```javascript
-[
-  "error",
-  "absolute-first"
-]
-```
-
-## [import/no-duplicates](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-duplicates.md)
-
-Reports if a resolved path is imported more than once.
-
-```javascript
-"error"
-```
-
-## [import/no-webpack-loader-syntax](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-webpack-loader-syntax.md)
-
-Forbid Webpack loader syntax in imports.
-
-```javascript
-"error"
-```
-
-## [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md)
-
-Disallow deprecated API
-
-```javascript
-"error"
-```
-
-## [node/process-exit-as-throw](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/process-exit-as-throw.md)
-
-Make the same code path as throw at process.exit()
-
-```javascript
-"error"
-```
-
-## [promise/param-names](https://github.com/xjamundx/eslint-plugin-promise#param-names)
-
-Enforce standard parameter names for Promise constructors
-
-```javascript
-"error"
-```
-
-## [standard/array-bracket-even-spacing](https://github.com/xjamundx/eslint-plugin-standard#rules-explanations)
-
-Like `array-bracket-even-spacing` from ESLint except it has an `either` option which lets you have 1 or 0 spacing padding.
-
-```javascript
-[
-  "error",
-  "either"
-]
-```
-
-## [standard/computed-property-even-spacing](https://github.com/xjamundx/eslint-plugin-standard#rules-explanations)
-
-Like `computed-property-spacing` around ESLint except is has an `even` option which lets you have 1 or 0 spacing padding.
-
-```javascript
-[
-  "error",
-  "even"
-]
-```
-
-## [standard/no-callback-literal](https://github.com/xjamundx/eslint-plugin-standard#rules-explanations)
-
-Ensures that we strictly follow the callback pattern with `undefined`, `null` or an error object in the first position of a callback.
-
-```javascript
-"error"
-```
-
-## [standard/object-curly-even-spacing](https://github.com/xjamundx/eslint-plugin-standard#rules-explanations)
-
-Like `object-curly-spacing` from ESLint except it has an `either` option which lets you have 1 or 0 spaces padding.
-
-```javascript
-[
-  "error",
-  "either"
-]
-```
-
-## [array-callback-return](https://eslint.org/docs/rules/array-callback-return)
-
-This rule finds callback functions of the following methods, then checks usage of `return` statement.
-
-```javascript
-"error"
-```
-
-## [class-methods-use-this](https://eslint.org/docs/rules/class-methods-use-this)
-
-This rule is aimed to flag class methods that do not use `this`.
-
-```javascript
-"error"
-```
-
-## [consistent-return](https://eslint.org/docs/rules/consistent-return)
-
-This rule requires `return` statements to either always or never specify values. This rule ignores function definitions where the name begins with an uppercase letter, because constructors (when invoked with the `new` operator) return the instantiated object implicitly if they do not return another object explicitly.
-
-```javascript
-"error"
-```
-
-## [default-case](https://eslint.org/docs/rules/default-case)
-
-This rule aims to require `default` case in `switch` statements. You may optionally include a `// no default` after the last `case` if there is no `default` case. The comment may be in any desired case, such as `// No Default`.
-
-```javascript
-[
-  "error",
-  {
-    "commentPattern": "^no default$"
-  }
-]
-```
-
-## [dot-notation](https://eslint.org/docs/rules/dot-notation)
-
-This rule is aimed at maintaining code consistency and improving code readability by encouraging use of the dot notation style whenever possible. As such, it will warn when it encounters an unnecessary use of square-bracket notation.
-
-```javascript
-"error"
-```
-
-## [guard-for-in](https://eslint.org/docs/rules/guard-for-in)
-
-This rule is aimed at preventing unexpected behavior that could arise from using a `for in` loop without filtering the results in the loop. As such, it will warn when `for in` loops do not filter their results with an `if` statement.
-
-```javascript
-"error"
-```
-
-## [no-alert](https://eslint.org/docs/rules/no-alert)
-
-This rule is aimed at catching debugging code that should be removed and popup UI elements that should be replaced with less obtrusive, custom UIs. As such, it will warn when it encounters `alert`, `prompt`, and `confirm` function calls which are not shadowed.
-
-```javascript
-"error"
-```
-
-## [no-case-declarations](https://eslint.org/docs/rules/no-case-declarations)
-
-This rule aims to prevent access to uninitialized lexical bindings as well as accessing hoisted functions across case clauses.
-
-```javascript
-"error"
-```
-
-## [no-else-return](https://eslint.org/docs/rules/no-else-return)
-
-This rule is aimed at highlighting an unnecessary block of code following an `if` containing a return statement. As such, it will warn when it encounters an `else` following a chain of `if`s, all of them containing a `return` statement.
-
-```javascript
-"error"
-```
-
-## [no-empty-function](https://eslint.org/docs/rules/no-empty-function)
-
-This rule is aimed at eliminating empty functions.
-A function will not be considered a problem if it contains a comment.
-
-```javascript
-"error"
-```
-
-## [no-loop-func](https://eslint.org/docs/rules/no-loop-func)
-
-This error is raised to highlight a piece of code that may not work as you expect it to and could also indicate a misunderstanding of how the language works. Your code may run without any problems if you do not fix this error, but in some situations it could behave unexpectedly.
-
-```javascript
-"error"
-```
-
-## [no-param-reassign](https://eslint.org/docs/rules/no-param-reassign)
-
-This rule aims to prevent unintended behavior caused by modification or reassignment of function parameters.
-
-```javascript
-[
-  "error",
-  {
-    "props": true
-  }
-]
-```
-
-## [no-script-url](https://eslint.org/docs/rules/no-script-url)
-
-Examples of <strong>incorrect</strong> code for this rule:
-
-```javascript
-"error"
-```
-
-## [no-useless-concat](https://eslint.org/docs/rules/no-useless-concat)
-
-This rule aims to flag the concatenation of 2 literals when they could be combined into a single literal. Literals can be strings or template literals.
-
-```javascript
-"error"
-```
-
-## [no-void](https://eslint.org/docs/rules/no-void)
-
-This rule aims to eliminate use of void operator.
-
-```javascript
-"error"
-```
-
-## [radix](https://eslint.org/docs/rules/radix)
-
-This rule is aimed at preventing the unintended conversion of a string to a number of a different base than intended or at preventing the redundant `10` radix if targeting modern environments only.
-
-```javascript
-"error"
-```
-
-## [no-console](https://eslint.org/docs/rules/no-console)
-
-This rule disallows calls to methods of the `console` object.
-
-```javascript
-"error"
-```
-
-## [no-empty](https://eslint.org/docs/rules/no-empty)
-
-This rule disallows empty block statements. This rule ignores block statements which contain a comment (for example, in an empty `catch` or `finally` block of a `try` statement to indicate that execution should continue regardless of errors).
-
-```javascript
-[
-  "error",
-  {
-    "allowEmptyCatch": true
-  }
-]
-```
-
-## [no-extra-semi](https://eslint.org/docs/rules/no-extra-semi)
-
-This rule disallows unnecessary semicolons.
-
-```javascript
-"error"
-```
-
-## [no-prototype-builtins](https://eslint.org/docs/rules/no-prototype-builtins)
-
-This rule disallows calling some `Object.prototype` methods directly on object instances.
-
-```javascript
-"error"
-```
-
-## [arrow-body-style](https://eslint.org/docs/rules/arrow-body-style)
-
-This rule can enforce or disallow the use of braces around arrow function body.
-
-```javascript
-"error"
-```
-
-## [no-var](https://eslint.org/docs/rules/no-var)
-
-This rule is aimed at discouraging the use of `var` and encouraging the use of `const` or `let` instead.
-
-```javascript
-"error"
-```
-
-## [prefer-const](https://eslint.org/docs/rules/prefer-const)
-
-This rule is aimed at flagging variables that are declared using `let` keyword, but never reassigned after the initial assignment.
-
-```javascript
-"error"
-```
-
-## [prefer-rest-params](https://eslint.org/docs/rules/prefer-rest-params)
-
-This rule is aimed to flag usage of `arguments` variables.
-
-```javascript
-"error"
-```
-
-## [prefer-spread](https://eslint.org/docs/rules/prefer-spread)
-
-This rule is aimed to flag usage of `Function.prototype.apply()` in situations where the spread operator could be used instead.
-
-```javascript
-"error"
-```
-
-## [prefer-template](https://eslint.org/docs/rules/prefer-template)
-
-This rule is aimed to flag usage of `+` operators with strings.
-
-```javascript
-"error"
-```
-
-## [require-yield](https://eslint.org/docs/rules/require-yield)
-
-This rule generates warnings for generator functions that do not have the `yield` keyword.
-
-```javascript
-"error"
-```
-
-## [import/no-unresolved](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-unresolved.md)
-
-Ensures an imported module can be resolved to a module on the local filesystem,
-as defined by standard Node `require.resolve` behavior.
-
-```javascript
-[
-  "error",
-  {
-    "commonjs": true
-  }
-]
-```
-
-## [import/no-named-as-default](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-named-as-default.md)
-
-Reports use of an exported name as the locally imported name of a default export.
-
-```javascript
-"error"
-```
-
-## [import/no-named-as-default-member](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-named-as-default-member.md)
-
-Reports use of an exported name as a property on the default export.
-
-```javascript
-"error"
-```
-
-## [import/no-mutable-exports](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-mutable-exports.md)
-
-Forbids the use of mutable exports with `var` or `let`.
-
-```javascript
-"error"
-```
-
-## [import/no-amd](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-amd.md)
-
-Reports `require([array], ...)` and `define([array], ...)` function calls at the
-module scope. Will not report if !=2 arguments, or first argument is not a literal array.
-
-```javascript
-"error"
-```
-
-## [import/newline-after-import](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/newline-after-import.md)
-
-Enforces having one or more empty lines after the last top-level import statement or require call.
-+(fixable) The `--fix` option on the [command line] automatically fixes problems reported by this rule.
-
-```javascript
-"error"
-```
-
-## [import/prefer-default-export](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/prefer-default-export.md)
-
-When there is only a single export from a module, prefer using default export over named export.
-
-```javascript
-"error"
-```
-
-## [global-require](https://eslint.org/docs/rules/global-require)
-
-This rule requires all calls to `require()` to be at the top level of the module, similar to ES6 `import` and `export` statements, which also can occur only at the top level.
-
-```javascript
-"error"
-```
-
-## [promise/always-return](https://github.com/xjamundx/eslint-plugin-promise#always-return)
-
-Ensure that inside a `then()` you make sure to `return` a new promise or value.
-See <a href="http://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html">http://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html</a> (rule #5)
-for more info on why that&apos;s a good idea.
-
-```javascript
-"error"
-```
-
-## [promise/catch-or-return](https://github.com/xjamundx/eslint-plugin-promise#catch-or-return)
-
-Ensure that each time a `then()` is applied to a promise, a
-`catch()` is applied as well. Exceptions are made if you are
-returning that promise.
-
-```javascript
-"error"
-```
-
-## [strict](https://eslint.org/docs/rules/strict)
-
-This rule requires or disallows strict mode directives.
-
-```javascript
-[
-  "error",
-  "never"
-]
-```
-
-## [func-style](https://eslint.org/docs/rules/func-style)
-
-This rule enforces a particular type of `function` style throughout a JavaScript file, either declarations or expressions. You can specify which you prefer in the configuration.
-
-```javascript
-[
-  "error",
-  "declaration",
-  {
-    "allowArrowFunctions": true
-  }
-]
-```
-
-## [linebreak-style](https://eslint.org/docs/rules/linebreak-style)
-
-This rule enforces consistent line endings independent of operating system, VCS, or editor used across your codebase.
-
-```javascript
-[
-  "error",
-  "unix"
-]
-```
-
-## [max-len](https://eslint.org/docs/rules/max-len)
-
-This rule enforces a maximum line length to increase code readability and maintainability. The length of a line is defined as the number of Unicode characters in the line.
-
-```javascript
-[
-  "error",
-  100,
-  2,
-  {
-    "ignoreComments": false,
-    "ignoreUrls": true
-  }
-]
-```
-
-## [newline-per-chained-call](https://eslint.org/docs/rules/newline-per-chained-call)
-
-This rule requires a newline after each call in a method chain or deep member access. Computed property accesses such as `instance[something]` are excluded.
-
-```javascript
-"error"
-```
-
-## [no-continue](https://eslint.org/docs/rules/no-continue)
-
-This rule disallows `continue` statements.
-
-```javascript
-"error"
-```
-
-## [no-lonely-if](https://eslint.org/docs/rules/no-lonely-if)
-
-This rule disallows `if` statements as the only statement in `else` blocks.
-
-```javascript
-"error"
-```
-
-## [no-nested-ternary](https://eslint.org/docs/rules/no-nested-ternary)
-
-The `no-nested-ternary` rule disallows nested ternary expressions.
-
-```javascript
-"error"
-```
-
-## [no-underscore-dangle](https://eslint.org/docs/rules/no-underscore-dangle)
-
-This rule disallows dangling underscores in identifiers.
-
-```javascript
-"error"
-```
-
-## [operator-assignment](https://eslint.org/docs/rules/operator-assignment)
-
-This rule requires or disallows assignment operator shorthand where possible.
-
-```javascript
-[
-  "error",
-  "always"
-]
-```
-
-## [quote-props](https://eslint.org/docs/rules/quote-props)
-
-This rule requires quotes around object literal property names.
-
-```javascript
-[
-  "error",
-  "as-needed",
-  {
-    "keywords": false,
-    "unnecessary": true,
-    "numbers": false
-  }
-]
-```
-
-## [no-shadow](https://eslint.org/docs/rules/no-shadow)
-
-This rule aims to eliminate shadowed variable declarations.
-
-```javascript
-"error"
 ```
