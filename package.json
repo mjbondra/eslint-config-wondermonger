@@ -22,7 +22,8 @@
     "build": "yarn run build:docs",
     "build:docs": "./bin/generate-documentation -c lib/index.js > ./docs/rules/README.md",
     "lint": "eslint \"**/*.js\"",
-    "test": "yarn test:unit && yarn test:integration",
+    "test": "yarn test:unit && yarn test:integration && yarn test:coverage",
+    "test:coverage": "nyc -r text -r html mocha -R progress \"test/unit/**/*.js\"",
     "test:integration": "mocha \"test/integration/**/*.js\"",
     "test:unit": "mocha \"test/unit/**/*.js\""
   },
@@ -41,6 +42,7 @@
     "eslint-rule-documentation": "^1.0.18",
     "mocha": "^4.0.0",
     "node-fetch": "^1.7.3",
+    "nyc": "^11.4.1",
     "require-dir": "^0.3.0",
     "yargs": "^10.0.3"
   },
