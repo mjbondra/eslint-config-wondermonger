@@ -52,7 +52,7 @@ Create a file named `.eslintrc` in your project's root directory that contains t
 
 The MIT License (MIT)
 
-Copyright (c) 2016-2017 Michael J. Bondra <mjbondra@gmail.com>
+Copyright (c) 2016-2018 Michael J. Bondra <mjbondra@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
