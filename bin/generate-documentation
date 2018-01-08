@@ -54,7 +54,7 @@ async function getDescription ({ rule, url }) {
       eslint: () => $('#rule-details')
         .next()
         .html(),
-      import: () => $(`#user-content-${ruleName}`)
+      import: () => $(`#user-content-import${ruleName}`)
         .parent()
         .next()
         .html(),
@@ -71,7 +71,7 @@ async function getDescription ({ rule, url }) {
         .replace(`<code>${ruleName}</code> - `, '')
     };
 
-    return description[source]();
+    return description[source]() || '';
   } catch (err) {
     stderr.write(`${err.stack}\n`);
     return '';
