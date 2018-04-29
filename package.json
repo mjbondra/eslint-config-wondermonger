@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-wondermonger",
-  "version": "2.0.4-0",
+  "version": "3.0.0-0",
   "description": "Opinionated ESLint configuration for Wondermonger projects.",
   "main": "lib/index.js",
   "author": {
@@ -28,7 +28,7 @@
     "test:unit": "mocha \"test/unit/**/*.js\""
   },
   "dependencies": {
-    "eslint-config-standard": "^10.2.0"
+    "eslint-config-standard": "^11.0.0"
   },
   "devDependencies": {
     "chai": "^4.1.0",
@@ -36,20 +36,20 @@
     "dirty-chai": "^2.0.0",
     "eslint": "^4.11.0",
     "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
     "eslint-rule-documentation": "^1.0.18",
-    "mocha": "^4.0.0",
-    "node-fetch": "^1.7.3",
+    "mocha": "^5.0.0",
+    "node-fetch": "^2.0.0",
     "nyc": "^11.4.1",
-    "require-dir": "^0.3.0",
-    "yargs": "^10.0.3"
+    "require-dir": "^1.0.0",
+    "yargs": "^11.0.0"
   },
   "peerDependencies": {
     "eslint": "^4.11.0",
     "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-node": "^5.2.0",
+    "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.0"
   }
