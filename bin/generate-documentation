@@ -61,10 +61,10 @@ async function getDescription ({ rule, url }) {
       node: () => $('#readme h1')
         .text()
         .replace(` (${ruleName})`, ''),
-      promise: () => $(`#user-content-${ruleName}, #user-content-rule-${ruleName}`)
-        .parent()
-        .next()
-        .html(),
+      promise: () => $('#readme h1')
+        .html()
+        .replace(/^<a .+?<\/a>/, '')
+        .replace(` (${ruleName})`, '.'),
       standard: () => $('#readme li')
         .filter((index, item) => new RegExp(`^${ruleName}`).test($(item).text()))
         .html()
