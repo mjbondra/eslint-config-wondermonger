@@ -21,7 +21,7 @@
   "scripts": {
     "build": "yarn run build:docs",
     "build:docs": "./bin/generate-documentation -c lib/index.js > ./docs/rules/README.md",
-    "lint": "eslint \"**/*.js\"",
+    "lint": "eslint \"bin/**/*\" \"lib/**/*.js\" \"test/**/*.js\"",
     "test": "yarn test:unit && yarn test:integration && yarn test:coverage",
     "test:coverage": "nyc -r text -r html mocha -R progress \"test/unit/**/*.js\"",
     "test:integration": "mocha \"test/integration/**/*.js\"",
