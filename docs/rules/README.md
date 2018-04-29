@@ -576,7 +576,26 @@ This rule enforces a consistent indentation style. The default style is `4 space
   "error",
   2,
   {
-    "SwitchCase": 1
+    "SwitchCase": 1,
+    "VariableDeclarator": 1,
+    "outerIIFEBody": 1,
+    "MemberExpression": 1,
+    "FunctionDeclaration": {
+      "parameters": 1,
+      "body": 1
+    },
+    "FunctionExpression": {
+      "parameters": 1,
+      "body": 1
+    },
+    "CallExpression": {
+      "arguments": 1
+    },
+    "ArrayExpression": 1,
+    "ObjectExpression": 1,
+    "ImportDeclaration": 1,
+    "flatTernaryExpressions": false,
+    "ignoreComments": false
   }
 ]
 ```
@@ -1390,7 +1409,7 @@ This rule disallows trailing whitespace (spaces, tabs, and other Unicode whitesp
 
 ## [no-undef](https://eslint.org/docs/rules/no-undef)
 
-Any reference to an undeclared variable causes a warning, unless the variable is explicitly mentioned in a `/*global ...*/` comment.
+Any reference to an undeclared variable causes a warning, unless the variable is explicitly mentioned in a `/*global ...*/` comment, or specified in the <a href="https://eslint.org/docs/user-guide/configuring#specifying-globals">`globals` key in the configuration file</a>. A common use case for these is if you intentionally use globals that are defined elsewhere (e.g. in a script sourced from HTML).
 
 ```javascript
 "error"
@@ -1719,29 +1738,25 @@ This rule is aimed to flag usage of `+` operators with strings.
 "error"
 ```
 
-## [promise/always-return](https://github.com/xjamundx/eslint-plugin-promise#always-return)
+## [promise/always-return](https://github.com/xjamundx/eslint-plugin-promise/blob/master/docs/rules/always-return.md)
 
-Ensure that inside a `then()` you make sure to `return` a new promise or value.
-See <a href="http://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html">http://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html</a> (rule #5)
-for more info on why that&apos;s a good idea.
+Return inside each `then()` to create readable and reusable Promise chains.
 
 ```javascript
 "error"
 ```
 
-## [promise/catch-or-return](https://github.com/xjamundx/eslint-plugin-promise#catch-or-return)
+## [promise/catch-or-return](https://github.com/xjamundx/eslint-plugin-promise/blob/master/docs/rules/catch-or-return.md)
 
-Ensure that each time a `then()` is applied to a promise, a
-`catch()` is applied as well. Exceptions are made if you are
-returning that promise.
+Enforces the use of `catch()` on un-returned promises.
 
 ```javascript
 "error"
 ```
 
-## [promise/param-names](https://github.com/xjamundx/eslint-plugin-promise#param-names)
+## [promise/param-names](https://github.com/xjamundx/eslint-plugin-promise/blob/master/docs/rules/param-names.md)
 
-Enforce standard parameter names for Promise constructors
+Enforce consistent param names when creating new promises.
 
 ```javascript
 "error"
@@ -1896,7 +1911,8 @@ exceptions for various documentation styles.
         "*package",
         "!",
         "/",
-        ","
+        ",",
+        "="
       ]
     },
     "block": {
