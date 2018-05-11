@@ -1,6 +1,6 @@
 # eslint-config-wondermonger
 
-[![pipeline status](https://gitlab.com/wondermonger/eslint-config-wondermonger/badges/v3.0.0/pipeline.svg)](https://gitlab.com/wondermonger/eslint-config-wondermonger/pipelines/21265728) [![coverage report](https://gitlab.com/wondermonger/eslint-config-wondermonger/badges/v3.0.0/coverage.svg)](https://wondermonger.gitlab.io/-/eslint-config-wondermonger/-/jobs/65599937/artifacts/coverage/index.html)
+[![pipeline status](https://gitlab.com/wondermonger/eslint-config-wondermonger/badges/master/pipeline.svg)](https://gitlab.com/wondermonger/eslint-config-wondermonger/pipelines/21851725) [![coverage report](https://gitlab.com/wondermonger/eslint-config-wondermonger/badges/master/coverage.svg)](https://wondermonger.gitlab.io/-/eslint-config-wondermonger/-/jobs/67668974/artifacts/coverage/index.html)
 
 Opinionated ESLint configuration for [@wondermonger](https://gitlab.com/wondermonger) projects.
 
