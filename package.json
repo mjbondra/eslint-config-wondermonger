@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-wondermonger",
-  "version": "4.0.1-0",
+  "version": "4.0.1",
   "description": "Opinionated ESLint configuration for Wondermonger projects.",
   "keywords": [
     "eslint",
