@@ -1,14 +1,8 @@
 # eslint-config-wondermonger
 
-[![pipeline status](https://gitlab.com/wondermonger/eslint-config-wondermonger/badges/master/pipeline.svg)](https://gitlab.com/wondermonger/eslint-config-wondermonger/pipelines/21851725) [![coverage report](https://gitlab.com/wondermonger/eslint-config-wondermonger/badges/master/coverage.svg)](https://wondermonger.gitlab.io/-/eslint-config-wondermonger/-/jobs/67668974/artifacts/coverage/index.html)
-
 Opinionated ESLint configuration for [@wondermonger](https://gitlab.com/wondermonger) projects.
 
 ## Installation
-
-```shell
-npm i --save-dev eslint-config-wondermonger
-```
 
 #### Peer Dependencies
 
@@ -21,7 +15,8 @@ npm i --save-dev eslint-config-wondermonger
 - [eslint-plugin-standard](https://github.com/xjamundx/eslint-plugin-standard)
 
 ```shell
-npm i --save-dev eslint \
+npm i --save-dev eslint-config-wondermonger
+  eslint \
   eslint-plugin-import \
   eslint-plugin-node \
   eslint-plugin-prettier \
