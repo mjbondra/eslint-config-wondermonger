@@ -1,20 +1,20 @@
 #!/usr/bin/env node
 
-'use strict';
+"use strict";
 
-const { CLIEngine } = require('eslint');
-const getRuleURI = require('eslint-rule-documentation');
-const fetch = require('node-fetch');
-const cheerio = require('cheerio');
-const yargs = require('yargs');
+const { CLIEngine } = require("eslint");
+const getRuleURI = require("eslint-rule-documentation");
+const fetch = require("node-fetch");
+const cheerio = require("cheerio");
+const yargs = require("yargs");
 
 const { stderr, stdout } = process;
 
-const { argv } = yargs.option('config', {
-  alias: 'c',
-  default: '.eslintrc',
-  describe: 'ESLint configuration file',
-  type: 'string'
+const { argv } = yargs.option("config", {
+  alias: "c",
+  default: ".eslintrc",
+  describe: "ESLint configuration file",
+  type: "string"
 });
 
 const cli = new CLIEngine({
@@ -22,12 +22,16 @@ const cli = new CLIEngine({
   useEslintrc: false
 });
 
-const config = cli.getConfigForFile();
+const config = cli.getConfigForFile(argv.config);
 
 // header
-stdout.write('# Rules\n\n');
-stdout.write('Listed below are the rules and configuration for `eslint-config-wondermonger`.\n\n');
-stdout.write('Global `\'use strict\';` is required when using `eslint-config-wondermonger/lib/script`.\n\n');
+stdout.write("# Rules\n\n");
+stdout.write(
+  "Listed below are the rules and configuration for `eslint-config-wondermonger`.\n\n"
+);
+stdout.write(
+  "Global `'use strict';` is required when using `eslint-config-wondermonger/lib/script`.\n\n"
+);
 
 const sortedRuleValuePairs = Object.entries(config.rules).sort(([a], [b]) => {
   if (a > b) return 1;
@@ -36,45 +40,58 @@ const sortedRuleValuePairs = Object.entries(config.rules).sort(([a], [b]) => {
 });
 
 // table of contents
-stdout.write('## Table of Contents\n\n');
-sortedRuleValuePairs.forEach(([rule]) => stdout.write(`1. [${rule}](#${rule.replace('/', '')})\n`));
-stdout.write('\n');
+stdout.write("## Table of Contents\n\n");
+sortedRuleValuePairs.forEach(([rule]) =>
+  stdout.write(`1. [${rule}](#${rule.replace("/", "")})\n`)
+);
+stdout.write("\n");
 
 // rules, descriptions, and values
-async function getDescription ({ rule, url }) {
+async function getDescription({ rule, url }) {
   try {
-    const ruleName = rule.replace(/^.+\//, '');
-    const source = (url.match(/plugin-(.+?)[/#]/) || [])[1] || 'eslint';
+    const ruleName = rule.replace(/^.+\//, "");
+    const source = (url.match(/plugin-(.+?)[/#]/) || [])[1] || "eslint";
 
     const res = await fetch(url);
     const body = await res.text();
     const $ = cheerio.load(body);
 
     const description = {
-      eslint: () => $('#rule-details')
-        .next()
-        .html(),
-      import: () => $(`#user-content-import${ruleName}`)
-        .parent()
-        .next()
-        .html(),
-      node: () => $('#readme h1')
-        .text()
-        .replace(` (${ruleName})`, ''),
-      promise: () => $('#readme h1')
-        .html()
-        .replace(/^<a .+?<\/a>/, '')
-        .replace(` (${ruleName})`, '.'),
-      standard: () => $('#readme li')
-        .filter((index, item) => new RegExp(`^${ruleName}`).test($(item).text()))
-        .html()
-        .replace(`<code>${ruleName}</code> - `, '')
+      eslint: () =>
+        $("#rule-details")
+          .next()
+          .html(),
+      import: () =>
+        $(`#user-content-import${ruleName}`)
+          .parent()
+          .next()
+          .html(),
+      node: () =>
+        $("#readme h1")
+          .text()
+          .replace(` (${ruleName})`, ""),
+      prettier: () =>
+        $("#readme h1")
+          .next()
+          .text(),
+      promise: () =>
+        $("#readme h1")
+          .html()
+          .replace(/^<a .+?<\/a>/, "")
+          .replace(` (${ruleName})`, "."),
+      standard: () =>
+        $("#readme li")
+          .filter((index, item) =>
+            new RegExp(`^${ruleName}`).test($(item).text())
+          )
+          .html()
+          .replace(`<code>${ruleName}</code> - `, "")
     };
 
-    return description[source]() || '';
+    return description[source]() || "";
   } catch (err) {
     stderr.write(`${err.stack}\n`);
-    return '';
+    return "";
   }
 }
 
@@ -82,7 +99,7 @@ const rulesMdPromises = sortedRuleValuePairs.map(async ([rule, value]) => {
   const { found, url } = getRuleURI(rule);
   const description = await getDescription({ found, rule, url });
 
-  const descriptionMd = description.replace(/<[/]*code.*?>/g, '`');
+  const descriptionMd = description.replace(/<[/]*code.*?>/g, "`");
   const ruleMd = `## [${rule}](${url})`;
   const valueMd = `\`\`\`javascript\n${JSON.stringify(value, null, 2)}\n\`\`\``;
 
@@ -90,5 +107,5 @@ const rulesMdPromises = sortedRuleValuePairs.map(async ([rule, value]) => {
 });
 
 Promise.all(rulesMdPromises)
-  .then(rulesMdArray => stdout.write(`${rulesMdArray.join('\n\n')}\n`))
+  .then(rulesMdArray => stdout.write(`${rulesMdArray.join("\n\n")}\n`))
   .catch(err => stderr.write(`${err.stack}\n`));

@@ -1,14 +1,7 @@
 {
   "name": "eslint-config-wondermonger",
-  "version": "3.0.2-0",
+  "version": "4.0.0-0",
   "description": "Opinionated ESLint configuration for Wondermonger projects.",
-  "main": "lib/index.js",
-  "author": {
-    "name": "Michael J. Bondra",
-    "email": "mjbondra@gmail.com",
-    "url": "https://mjbondra.com/"
-  },
-  "license": "MIT",
   "keywords": [
     "eslint",
     "eslintconfig",
@@ -18,39 +11,52 @@
     "type": "git",
     "url": "https://gitlab.com/wondermonger/eslint-config-wondermonger.git"
   },
+  "license": "MIT",
+  "author": {
+    "name": "Michael J. Bondra",
+    "email": "mjbondra@gmail.com",
+    "url": "https://mjbondra.com/"
+  },
+  "main": "lib/index.js",
   "scripts": {
-    "build": "yarn run build:docs",
+    "build": "npm run build:docs",
     "build:docs": "./bin/generate-documentation -c lib/index.js > ./docs/rules/README.md",
-    "lint": "eslint \"bin/**/*\" \"lib/**/*.js\" \"test/**/*.js\"",
-    "test": "yarn test:unit && yarn test:integration && yarn test:coverage",
-    "test:coverage": "nyc -r text -r html mocha -R progress \"test/unit/**/*.js\"",
+    "lint": "eslint \"bin/**/*\" \"{lib,test}/**/*.js\"",
+    "lint:fix": "eslint --fix \"bin/**/*\" \"{lib,test}/**/*.js\"",
+    "test": "npm run test:unit && npm run test:integration",
+    "test:coverage": "nyc -a -x \"{public,test}/**/*.js\" --report-dir ./public/coverage -r text -r html mocha -R progress \"test/unit/**/*.js\"",
     "test:integration": "mocha \"test/integration/**/*.js\"",
     "test:unit": "mocha \"test/unit/**/*.js\""
   },
   "dependencies": {
-    "eslint-config-standard": "^11.0.0"
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-config-standard": "^14.0.1"
   },
   "devDependencies": {
-    "chai": "^4.1.0",
-    "cheerio": "^1.0.0-rc.2",
+    "chai": "^4.2.0",
+    "cheerio": "^1.0.0-rc.3",
     "dirty-chai": "^2.0.0",
-    "eslint": "^4.11.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-node": "^6.0.0",
-    "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "eslint-rule-documentation": "^1.0.18",
-    "mocha": "^5.0.0",
-    "node-fetch": "^2.0.0",
-    "nyc": "^11.4.1",
-    "require-dir": "^1.0.0",
-    "yargs": "^11.0.0"
+    "eslint": "^6.2.2",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-rule-documentation": "^1.0.23",
+    "mocha": "^6.2.0",
+    "node-fetch": "^2.6.0",
+    "nyc": "^14.1.1",
+    "prettier": "^1.18.2",
+    "require-dir": "^1.2.0",
+    "yargs": "^14.0.0"
   },
   "peerDependencies": {
-    "eslint": "^4.11.0",
+    "eslint": "^6.0.0",
     "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-node": "^6.0.0",
-    "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-standard": "^3.0.0"
+    "eslint-plugin-node": "^9.0.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-promise": "^4.0.0",
+    "eslint-plugin-standard": "^4.0.0",
+    "prettier": "^1.0.0"
   }
 }
