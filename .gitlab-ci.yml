@@ -1,9 +1,9 @@
 include:
-  - https://gitlab.com/wondermonger/ci-tools/raw/v6.0.3/tpl/node/base.yml
-  - https://gitlab.com/wondermonger/ci-tools/raw/v6.0.3/tpl/node/post-install/lint.yml
-  - https://gitlab.com/wondermonger/ci-tools/raw/v6.0.3/tpl/node/test/expanded.yml
-  - https://gitlab.com/wondermonger/ci-tools/raw/v6.0.3/tpl/node/test/coverage.yml
-  - https://gitlab.com/wondermonger/ci-tools/raw/v6.0.3/tpl/node/post-build/pages.yml
+  - https://gitlab.com/wondermonger/ci-tools/raw/v6.0.4/tpl/node/base.yml
+  - https://gitlab.com/wondermonger/ci-tools/raw/v6.0.4/tpl/node/post-install/lint.yml
+  - https://gitlab.com/wondermonger/ci-tools/raw/v6.0.4/tpl/node/test/expanded.yml
+  - https://gitlab.com/wondermonger/ci-tools/raw/v6.0.4/tpl/node/test/coverage.yml
+  - https://gitlab.com/wondermonger/ci-tools/raw/v6.0.4/tpl/node/post-build/pages.yml
 
 documentation:
   except:
