@@ -7,19 +7,27 @@ Opinionated ESLint configuration for [@wondermonger](https://gitlab.com/wondermo
 ## Installation
 
 ```shell
-yarn add -D eslint-config-wondermonger
+npm i --save-dev eslint-config-wondermonger
 ```
 
 #### Peer Dependencies
 
 - [ESLint](http://eslint.org/)
+- [Prettier](https://github.com/prettier/prettier)
 - [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import)
 - [eslint-plugin-node](https://github.com/mysticatea/eslint-plugin-node)
+- [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)
 - [eslint-plugin-promise](https://github.com/xjamundx/eslint-plugin-promise)
 - [eslint-plugin-standard](https://github.com/xjamundx/eslint-plugin-standard)
 
 ```shell
-yarn add -D eslint eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard
+npm i --save-dev eslint \
+  eslint-plugin-import \
+  eslint-plugin-node \
+  eslint-plugin-prettier \
+  eslint-plugin-promise \
+  eslint-plugin-standard \
+  prettier
 ```
 
 ## Usage
@@ -37,6 +45,7 @@ Create a file named `.eslintrc` in your project's root directory that contains t
 ### `wondermonger`
 
 - Extends and (heavily) modifies [StandardJS](http://standardjs.com/rules.html).
+- Uses [Prettier](https://github.com/prettier/prettier) for code formatting rules and fixes.
 - Built for linting ES modules.
 
 ### `wondermonger/lib/script`
