@@ -8,6 +8,7 @@ Opinionated ESLint configuration for [@wondermonger](https://gitlab.com/wondermo
 
 - [ESLint](http://eslint.org/)
 - [Prettier](https://github.com/prettier/prettier)
+- [babel-eslint](https://github.com/babel/babel-eslint)
 - [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import)
 - [eslint-plugin-node](https://github.com/mysticatea/eslint-plugin-node)
 - [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)
@@ -15,7 +16,8 @@ Opinionated ESLint configuration for [@wondermonger](https://gitlab.com/wondermo
 - [eslint-plugin-standard](https://github.com/xjamundx/eslint-plugin-standard)
 
 ```shell
-npm i --save-dev eslint-config-wondermonger
+npm i --save-dev eslint-config-wondermonger \
+  babel-eslint \
   eslint \
   eslint-plugin-import \
   eslint-plugin-node \
