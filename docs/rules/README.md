@@ -44,6 +44,7 @@ Global `'use strict';` is required when using `eslint-config-wondermonger/lib/sc
 1. [import/newline-after-import](#importnewline-after-import)
 1. [import/no-absolute-path](#importno-absolute-path)
 1. [import/no-amd](#importno-amd)
+1. [import/no-commonjs](#importno-commonjs)
 1. [import/no-duplicates](#importno-duplicates)
 1. [import/no-mutable-exports](#importno-mutable-exports)
 1. [import/no-named-as-default](#importno-named-as-default)
@@ -51,7 +52,6 @@ Global `'use strict';` is required when using `eslint-config-wondermonger/lib/sc
 1. [import/no-named-default](#importno-named-default)
 1. [import/no-unresolved](#importno-unresolved)
 1. [import/no-webpack-loader-syntax](#importno-webpack-loader-syntax)
-1. [import/prefer-default-export](#importprefer-default-export)
 1. [indent](#indent)
 1. [indent-legacy](#indent-legacy)
 1. [jsx-quotes](#jsx-quotes)
@@ -671,6 +671,17 @@ module scope. Will not report if !=2 arguments, or first argument is not a liter
 ]
 ```
 
+## [import/no-commonjs](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-commonjs.md)
+
+Reports `require([string])` function calls. Will not report if &gt;1 argument,
+or single argument is not a literal string.
+
+```javascript
+[
+  "error"
+]
+```
+
 ## [import/no-duplicates](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-duplicates.md)
 
 Reports if a resolved path is imported more than once.
@@ -740,16 +751,6 @@ as defined by standard Node `require.resolve` behavior.
 ## [import/no-webpack-loader-syntax](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-webpack-loader-syntax.md)
 
 Forbid Webpack loader syntax in imports.
-
-```javascript
-[
-  "error"
-]
-```
-
-## [import/prefer-default-export](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/prefer-default-export.md)
-
-When there is only a single export from a module, prefer using default export over named export.
 
 ```javascript
 [
@@ -1583,7 +1584,7 @@ This rule aims to eliminate the use of `String`, `Number`, and `Boolean` with th
 
 ## [no-obj-calls](https://eslint.org/docs/rules/no-obj-calls)
 
-This rule disallows calling the `Math`, `JSON` and `Reflect` objects as functions.
+This rule disallows calling the `Math`, `JSON`, `Reflect` and `Atomics` objects as functions.
 
 ```javascript
 [
@@ -2521,7 +2522,7 @@ This rule aims to maintain consistency around the spacing inside of square brack
 
 ## [space-in-parens](https://eslint.org/docs/rules/space-in-parens)
 
-This rule will enforce consistency of spacing directly inside of parentheses, by disallowing or requiring one or more spaces to the right of `(` and to the left of `)`. In either case, `()` will still be allowed.
+This rule will enforce consistent spacing directly inside of parentheses, by disallowing or requiring one or more spaces to the right of `(` and to the left of `)`.
 
 ```javascript
 [
