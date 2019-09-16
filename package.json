@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-wondermonger",
-  "version": "5.0.1-0",
+  "version": "6.0.0-0",
   "description": "Opinionated ESLint configuration for Wondermonger projects.",
   "keywords": [
     "eslint",
@@ -33,6 +33,7 @@
     "eslint-config-standard": "^14.1.0"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.3",
     "chai": "^4.2.0",
     "cheerio": "^1.0.0-rc.3",
     "dirty-chai": "^2.0.0",
@@ -51,6 +52,7 @@
     "yargs": "^14.0.0"
   },
   "peerDependencies": {
+    "babel-eslint": "^10.0.0",
     "eslint": "^6.0.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^10.0.0",
