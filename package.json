@@ -45,7 +45,7 @@
     "eslint-plugin-standard": "^4.0.1",
     "eslint-rule-documentation": "^1.0.23",
     "mocha": "^6.2.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^3.1.1",
     "nyc": "^14.1.1",
     "prettier": "^1.18.2",
     "require-dir": "^1.2.0",
